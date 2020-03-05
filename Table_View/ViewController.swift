@@ -17,17 +17,13 @@ class ViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        loadCountries()
-        // Do any additional setup after loading the view.
+        //loadCountries()
+        countryNames = DataStorage.getInstance().getAllCountries()
+    
     }
         
     func loadCountries()
     {
-        countryNames.append(Country(name: "Afghanistan", capital: "Kabul", flag: #imageLiteral(resourceName: "Afghanistan")))
-        countryNames.append(Country(name: "India", capital: "New Delhi", flag: #imageLiteral(resourceName: "India")))
-        countryNames.append(Country(name: "France", capital: "Paris", flag: #imageLiteral(resourceName: "France")))
-        countryNames.append(Country(name: "Canada", capital: "Ottawa", flag: #imageLiteral(resourceName: "Canada")))
-        countryNames.append(Country(name: "Nepal", capital: "Kathmandu", flag: #imageLiteral(resourceName: "Nepal")))
         
         //  ["Afghanistan", "Angola", "Aruba", "Canada", "India", "Bahamas", "Ghana", "Nepal", "France", "USA", "Kenya", "Bermudes", "Danemark", "Mexico", "UK", "China", "Pakistan", "Zimbabave", "Venezuella", "Turkey", "Qatar", "Philippines", "NetherLand", "Sri Lanka", "Iran"]
     }
@@ -60,6 +56,16 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return CGFloat(100.0)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let c = countryNames[indexPath.row]
+        print(c.name)
+    }
     
     
 }
